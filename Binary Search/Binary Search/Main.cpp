@@ -19,8 +19,17 @@ int recursiveBinarySearch(int arr[], int low, int high, int x)
 
 int iterativeBinarySearch(int arr[], int low, int high, int x)
 {
-
-	return 0;
+	while (low <= high)
+	{
+		int mid = (high + low) / 2;
+		if (x == arr[mid])
+			return mid;
+		if (x < arr[mid])
+			high = mid - 1;
+		else
+			low = mid + 1;
+	}
+	return -1;
 }
 
 int main()
@@ -33,7 +42,9 @@ int main()
 
 	int ReResult = recursiveBinarySearch(arr, low, high - 1, x);
 
-	cout << ReResult << endl;
+	int ItrResult = iterativeBinarySearch(arr, low, high - 1, x);
+
+	cout << ReResult << endl << ItrResult << endl;
 
 	return 0;
 }
